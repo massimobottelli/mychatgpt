@@ -42,11 +42,15 @@ app.get('/', (req, res) => {
 app.post('/clear', (req, res) => {
     history = [];
     response = [];
+    res.render('index');
+    console.log("reset chat"); // debug
 });
 
 // Handle the form submission and render the greeting page
 app.post('/', (req, res) => {
     const user_input = req.body.prompt;
+
+    console.log(user_input); // debug
 
     // use the prompt with chatbot
     if (user_input != "") {
@@ -75,6 +79,8 @@ app.post('/', (req, res) => {
 
             const completion_text = completion.data.choices[0].message.content;
             history.push([user_input, completion_text]);
+
+            console.log(completion_text); // debug
 
             // Format questions and answers
             response += `<div class="question"><p>${user_input}</p></div>\n\n`;

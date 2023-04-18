@@ -17,9 +17,8 @@ html
       textarea(name='prompt' id='prompt')
         | #{prompt}
 
-      button(type="submit") Submit
-
       button#clear-button Reset 
+      button(type="submit") Submit
 
 script.
   const clearButton = document.querySelector('#clear-button');

@@ -1,73 +1,111 @@
-body {
-    font-family: Helvetica, sans-serif;
-    font-size: 1.1em;
-    padding: 0 0.5em 0 0.5em;
+:root {
+    --primary-color: rgb(46, 104, 210);
+    --secondary-color: rgb(245, 194, 66);
   }
-  
-  h1 a {
-    font-size: 1.5em;
-    margin-bottom: 1em;
-    color: darkblue;
-    text-decoration: none;
-  }
-  
-  label {
-    margin-bottom: 0.5em;
-    margin-right: 0.5em;
-  }
-  
-  textarea {
-    font-size: 1em;
-    padding: 0.5em;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 100%;
-    box-sizing: border-box;
-    margin-right: 0.5em;
-    display: block;
-  }
-  
-  button {
-    font-size: 1em;
-    padding: 0.5em 1em;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-right: 10px;
-  }
-  
-  button:hover {
-    background-color: #0069d9;
-  }
+  body {
+    margin: auto;
+    padding: 0;
+}
+.banner {
+	background-color: var(--primary-color);
+	color: white;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	text-align: right;
+}
 
-  label, textarea, button {
-    vertical-align: top;
+.banner h1 {
+    padding: 0 1em 0 0;
+    font-size: 2.0em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.banner h1 a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer {
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin: 1em;
+}
+
+button {
+    font-size: 0.9em;
+    padding: 0.5em 1em;
+    background-color: #EEE;
+    color: #999;
+    border: none;
+    border-radius: 0.5em;
+    cursor: pointer;
     margin-bottom: 10px;
   }
 
-  .answer {
-    background-color: #eee;
-    display: block;
-    padding: 1em;
-    line-height: 1.6em;
-    margin-bottom: 1.5em;
-    border-radius: 6px;
-    }
+.prompt {
+    flex: 1;
+    font-family:Arial, Helvetica, sans-serif;
+    border: 2px solid var(--primary-color);
+    padding: 0.5em;
+    border-radius: 0.5em;
+    margin: 0;
+    width: calc(100% - 2em - 50px);
+    background-color: white;
+    box-sizing: border-box;
+    font-size: 1.2em;
+    color: gray;
+    display: inline-block;
+    overflow: hidden;
+    resize: none;
+    vertical-align: baseline;
+}
 
-  .question {
-    font-size: 2em;
-    font-weight: bold;
-    margin-bottom: 0.5em;
-  }
-    
-  pre code {
-    font-family: monospace;
-    font-size: 14px;
-    background-color: #ddd;
-    padding: 1em;
-    border-radius: 6px;
-    display: block;
-    white-space: pre-wrap;
-  }
+.submit {
+    width: 35px;
+    height: 35px;
+    border: 0;
+    padding-top: 45px;
+    margin-left: 5px;
+    background-color: white;
+    background-image: url("arrow.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    vertical-align: baseline;
+}
+
+.content {
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1em;
+    padding: 1.0em;
+    padding-top: 5.5em;
+    padding-bottom: 50em;
+    line-height: 1.4em;
+}
+
+.question {
+    float: right;
+    max-width: 80%;
+    min-width: 10.0em;
+    background-color: var(--secondary-color);
+    border-radius: 1.5em;
+    padding: 0.5em 1.5em 0.5em 1.5em;
+    margin-bottom: 1.0em;
+}
+
+.answer {
+    float: left;
+    max-width: 80%;
+    min-width: 10.0em;
+    background-color: #EEE;
+    border-radius: 1.5em;
+    padding: 0.5em 1.5em 0.5em 1.5em;
+    margin-bottom: 1.0em;
+}

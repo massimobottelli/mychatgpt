@@ -1,0 +1,29 @@
+doctype html
+link(rel="stylesheet" href="/css/style.css")
+html
+  head
+    title myChatGPT
+
+  body
+    h1 
+      a(href='/') myChatGPT
+
+    div.history !{response}
+
+    form(action="/" method="POST")
+      label(for="prompt")
+
+      textarea(name='prompt' id='prompt')
+        | #{prompt}
+
+      button(type="submit") Submit
+
+      button#clear-button Reset 
+
+script.
+  const clearButton = document.querySelector('#clear-button');
+  clearButton.addEventListener('click', () => {
+    fetch('/clear', { method: 'POST' })
+      .then(response => response.text())
+      .catch(error => console.error(error));
+  });

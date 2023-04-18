@@ -12,7 +12,7 @@ sudo npm install -g nodemon
 ``` 
 Clone repository
 ```
-git clone 
+git clone https://github.com/massimobottelli/mychatgpt.git
 ```
 
 Setup OpenAI API key

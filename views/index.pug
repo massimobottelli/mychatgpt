@@ -1,29 +1,25 @@
 doctype html
-link(rel="stylesheet" href="/css/style.css")
 html
   head
-    meta(name='viewport', content='width=device-width, initial-scale=1')
-    title myChatGPT
-
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title My Page
+    link(rel='stylesheet', href='css/style.css')
   body
-    h1 
-      a(href='/') myChatGPT
-
-    div.history !{response}
-
-    form(action="/" method="POST")
-      label(for="prompt")
-
-      textarea(name='prompt' id='prompt')
-        | #{prompt}
-
-      button#clear-button Reset 
-      button(type="submit") Submit
-
-script.
-  const clearButton = document.querySelector('#clear-button');
-  clearButton.addEventListener('click', () => {
-    fetch('/clear', { method: 'POST' })
-      .then(response => response.text())
-      .catch(error => console.error(error));
-  });
+    div.banner
+      h1 
+        a(href='/') MyChatGPT
+    div.content
+      div.history !{response}
+    div.footer
+      button#clear-button New chat 
+      form(action="/" method="POST")
+        textarea.prompt(name='prompt', id='prompt', rows='1', placeholder='Your request...')
+        button.submit(type='submit')
+    script(type='text/javascript', src='js/functions.js')
+    script.
+      const clearButton = document.querySelector('#clear-button');
+      clearButton.addEventListener('click', () => {
+        fetch('/clear', { method: 'POST' })
+          .then(response => response.text())
+          .catch(error => console.error(error));
+      });

@@ -103,14 +103,13 @@ app.post('/', (req, res) => {
 
                 response = `${before}<pre><code>${code}</code></pre>${after}`;
             }
-            
+
             // render response in frontend
             res.render('index', {
                 response: response
             });
         })();
-    } else 
-    {
+    } else {
         // empty page
         res.render('index', {});
     };

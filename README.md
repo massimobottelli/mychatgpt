@@ -1,6 +1,6 @@
 # myChatGPT
 
-![myChatGPT](public/myChatGPT.jpeg)
+![myChatGPT](public/myChatGPT.png)
 
 
 ## Installation

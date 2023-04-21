@@ -91,7 +91,7 @@ pre code {
 }
 
 form {
-    width: calc(100% - 70px);
+    width: 100%;
     display: inline-block;
 }
 
@@ -102,7 +102,7 @@ form {
     padding: 0.5em;
     border-radius: 0.5em;
     margin: 0;
-    width: calc(100% - 100px);
+    width: calc(100% - 170px);
     background-color: white;
     box-sizing: border-box;
     font-size: 1.0em;
@@ -133,7 +133,6 @@ button {
     margin-left: 12px;
     margin-right: 12px;
     background-image: url("../img/download.png");
-    display: inline-block;
 }
 
 .clear {

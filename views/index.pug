@@ -13,12 +13,12 @@ html
     div.content
       div.chat !{content}
     div.footer
-      button.download
-        a(href=fileName)
-      button.download(type='button', onclick="location.href='./"+fileName+"'")
       form(action="/" method="POST")
+        button#download.download
         button#clear.clear  
-        textarea.prompt(name='prompt', id='prompt', rows='1', placeholder='Your request...')
+        textarea.prompt(name='prompt', id='prompt', rows='1', autofocus, placeholder='Your request...')
         button.submit(type='submit')
 
     script(type='text/javascript', src='js/functions.js')
+    script.
+      document.getElementById("prompt").focus();

@@ -1,0 +1,16 @@
+2023-04-21 13:52:18,"in linux how to move all content of folder and subfolder to another position"
+2023-04-21 13:52:29,"To move all content of a folder and subfolder to another position in Linux, you can use the `mv` command with the recursive option `-r`. Here's an example:
+
+```
+mv /path/to/source/folder/* /path/to/destination/folder/
+```
+
+This will move all files and subfolders from the `source` folder to the `destination` folder. Note that the `*` at the end of the source folder path specifies that all contents of the folder should be moved, including subfolders.
+
+If you also want to move the source folder itself, use the following command:
+
+```
+mv /path/to/source/folder /path/to/destination/
+```
+
+This will move the entire `source` folder and its contents to the `destination` folder."

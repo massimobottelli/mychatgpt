@@ -14,7 +14,7 @@ let chat = '';
 function createLogFile() {
 // Create an empty csv file with the current date and time as the name
 const now = moment();
-const fileName = now.format('YYYYMMDD_HHmmss') + '.csv';
+const fileName = "log/" + now.format('YYYYMMDD_HHmmss') + '.csv';
 
 fs.writeFile(fileName, '', function(err) {
     if (err) {
@@ -158,6 +158,14 @@ app.post('/clear', (req, res) => {
     res.render('index');
     fileName = createLogFile();
     console.log('\nChat reset'); // debug
+});
+
+// Handle download
+app.post('/download', (req, res) => {
+
+    console.log('\nDownload Log'); // debug
+    console.log(chat);
+
 });
 
 // Handle the form submission 

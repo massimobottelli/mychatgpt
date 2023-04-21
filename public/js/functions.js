@@ -29,6 +29,17 @@ const clearButton = document.querySelector('#clear');
         .catch(error => console.error(error));
     });
 
+const downloadLog = document.querySelector('#download');
+downloadLog.addEventListener('click', () => {
+        fetch('/download', {
+            method: 'POST'
+        })
+        .then(chat => chat.text())
+        .catch(error => console.error(error));
+    });
+
+
+
 
 
   

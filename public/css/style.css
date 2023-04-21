@@ -1,63 +1,106 @@
 :root {
+    --background-color: rgb(186, 186, 186);
     --primary-color: rgb(46, 104, 210);
     --secondary-color: rgb(245, 194, 66);
   }
+
+  @font-face {
+    font-family: 'monserrat';
+    src: url('../img/Montserrat-Regular.ttf') format('truetype'); 
+}
+
   body {
     margin: auto;
     padding: 0;
 }
-.banner {
-	background-color: var(--primary-color);
-	color: white;
+.header {
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
-	text-align: right;
+	background-color: var(--background-color);
+	color: white;
+	text-align: left;
 }
 
-.banner h1 {
-    padding: 0 1em 0 0;
-    font-size: 2.0em;
-    font-family: Arial, Helvetica, sans-serif;
+.header img {
+    padding: 1em;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+.header h1 {
+    display: inline-block;
+    vertical-align: middle;
+     padding: 0 1em 0 0;
+    font-size: 1.5em;
+    font-family: 'monserrat', Arial, Helvetica, sans-serif;
 }
 
-.banner h1 a {
+.header h1 a {
     color: white;
     text-decoration: none;
 }
 
-.footer {
+.content {
     background-color: white;
+    font-family: 'monserrat', Arial, Helvetica, sans-serif;
+    font-size: 1.0em;
+    padding: 1.0em;
+    padding-top: 7.0em;
+    padding-bottom: 4.0em;
+    line-height: 1.4em;
+    overflow-y: scroll;
+}
+
+.question {
+    max-width: 70%;
+    min-width: 8.0em;
+    background-color: var(--secondary-color);
+    border-radius: 1.5em;
+    padding: 0.5em;
+    margin-bottom: 1.0em;
+}
+
+.answer {
+    max-width: 70%;
+    min-width: 8.0em;
+    background-color: #EEE;
+    border-radius: 1.5em;
+    padding: 0.5em;
+    margin-bottom: 1.0em;
+    margin-left: 30%;
+}
+
+pre code {
+    font-family: monospace;
+    font-size: 1.0em;
+    background-color: #ddd;
+    padding: 1em;
+    border-radius: 1.0em;
+    display: block;
+    white-space: pre-wrap;
+  }
+
+.footer {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    margin: 1em;
+    background-color: white;
 }
-
-button {
-    font-size: 0.9em;
-    padding: 0.5em 1em;
-    background-color: #EEE;
-    color: #999;
-    border: none;
-    border-radius: 0.5em;
-    cursor: pointer;
-    margin-bottom: 10px;
-  }
 
 .prompt {
     flex: 1;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: 'monserrat', Arial, Helvetica, sans-serif;
     border: 2px solid var(--primary-color);
     padding: 0.5em;
     border-radius: 0.5em;
     margin: 0;
-    width: calc(100% - 2em - 50px);
+    width: calc(100% - 170px);
     background-color: white;
     box-sizing: border-box;
-    font-size: 1.2em;
+    font-size: 1.0em;
     color: gray;
     display: inline-block;
     overflow: hidden;
@@ -65,47 +108,36 @@ button {
     vertical-align: baseline;
 }
 
-.submit {
-    width: 35px;
-    height: 35px;
-    border: 0;
+button {
+    margin-bottom: 10px;
+    padding: 0.5em 1em;
     padding-top: 45px;
-    margin-left: 5px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
     background-color: white;
-    background-image: url("arrow.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     display: inline-block;
     vertical-align: baseline;
+  }
+
+.download {
+    width: 40px;
+    margin-left: 12px;
+    margin-right: 12px;
+    background-image: url("../img/download.png");
 }
 
-.content {
-    background-color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.1em;
-    padding: 1.0em;
-    padding-top: 5.5em;
-    padding-bottom: 50em;
-    line-height: 1.4em;
+.clear {
+    width: 30px;
+    margin-right: 12px;
+    background-image: url("../img/clear.png");
 }
 
-.question {
-    float: right;
-    max-width: 80%;
-    min-width: 10.0em;
-    background-color: var(--secondary-color);
-    border-radius: 1.5em;
-    padding: 0.5em 1.5em 0.5em 1.5em;
-    margin-bottom: 1.0em;
-}
-
-.answer {
-    float: left;
-    max-width: 80%;
-    min-width: 10.0em;
-    background-color: #EEE;
-    border-radius: 1.5em;
-    padding: 0.5em 1.5em 0.5em 1.5em;
-    margin-bottom: 1.0em;
+.submit {
+    width: 30px;
+    margin-left: 12px;
+    background-image: url("../img/arrow.png");
 }

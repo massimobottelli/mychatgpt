@@ -2,24 +2,27 @@ doctype html
 html
   head
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    title MyChatGPT
+    title PurrfectAI | Answers, purr-sonalized for you
     link(rel='stylesheet', href='css/style.css')
   body
-    div.banner
+    div.header
+      a(href='/') 
+        img(src="/img/header-logo.png", alt="PurrfectAI | Answers, purr-sonalized for you")
       h1 
-        a(href='/') MyChatGPT
+        a(href='/') PurrfectAI
     div.content
-      div.history !{response}
+      div.chat !{content}
     div.footer
-      button#clear-button New chat 
       form(action="/" method="POST")
+        button#download.download 
+        button#clear.clear  
         textarea.prompt(name='prompt', id='prompt', rows='1', placeholder='Your request...')
         button.submit(type='submit')
     script(type='text/javascript', src='js/functions.js')
     script.
-      const clearButton = document.querySelector('#clear-button');
+      const clearButton = document.querySelector('#clear');
       clearButton.addEventListener('click', () => {
         fetch('/clear', { method: 'POST' })
-          .then(response => response.text())
+          .then(chat => chat.text())
           .catch(error => console.error(error));
       });

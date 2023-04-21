@@ -1,9 +1,13 @@
+// PurrfectAI
+// Answers, purr-sonalized for you
+
+
 const express = require('express');
 const app = express();
 const port = 3000;
 
 let history = [];
-let response = '';
+let chat = '';
 
 // initialize OpenAI API
 const {
@@ -41,7 +45,7 @@ app.get('/', (req, res) => {
 // Handle clear history
 app.post('/clear', (req, res) => {
     history = [];
-    response = [];
+    chat = [];
     res.render('index');
     console.log("reset chat"); // debug
 });
@@ -54,6 +58,12 @@ app.post('/', (req, res) => {
 
     // use the prompt with chatbot
     if (user_input != "") {
+
+        // display user prompt before processing
+        // chat += `<div class="question"><p>${user_input}</p></div>`;
+        //res.render('index', { content: chat });
+        // cannot render twice in response to the same request!
+
         (async () => {
             const messages = [];
             for (const [input_text, completion_text] of history) {
@@ -82,34 +92,35 @@ app.post('/', (req, res) => {
 
             console.log(completion_text); // debug
 
-            // Format questions and answers
-            response += `<div class="question"><p>${user_input}</p></div>\n\n`;
-            response += `<div class="answer"><p>${completion_text}</p></div>\n\n`;
+            // Add question and answer to chat 
+            chat += `<div class="question"><p>${user_input}</p></div>`;
+            chat += `<div class="answer"><p>${completion_text}</p></div>`;
 
-            response = response.replace(/\n/g, "<br>");
+            chat = chat.replace(/\n/g, "<br>");
 
-            // handle source code in answer
-            const firstIndex = response.indexOf('```');
-            const secondIndex = response.indexOf('```', firstIndex + 1);
+            // format source code in answer
+            while (chat.indexOf('```') > 0) {
+                const firstIndex = chat.indexOf('```');
+                const secondIndex = chat.indexOf('```', firstIndex + 1);
 
-            if (firstIndex !== -1 && secondIndex !== -1) {
-                const before = response.substring(0, firstIndex);
-                let code = response.substring(firstIndex + 3, secondIndex);
-                const after = response.substring(secondIndex + 3);
+                if (firstIndex !== -1 && secondIndex !== -1) {
+                    const before = chat.substring(0, firstIndex);
+                    let code = chat.substring(firstIndex + 3, secondIndex);
+                    const after = chat.substring(secondIndex + 3);
 
-                code = code.replace(/<br>/g, '\n');
-                code = code.replace(/</g, '&lt;');
-                code = code.replace(/>/g, '&gt;');
+                    code = code.replace(/<br>/g, '\n');
+                    code = code.replace(/</g, '&lt;');
+                    code = code.replace(/>/g, '&gt;');
 
-                response = `${before}<pre><code>${code}</code></pre>${after}`;
+                    chat = `${before}<pre><code>${code}</code></pre>${after}`;
+                }
             }
-
-            // render response in frontend
-            res.render('index', {
-                response: response
-            });
+            
+            // render chat in frontend
+            res.render('index', { content: chat });
         })();
-    } else {
+    } else 
+    {
         // empty page
         res.render('index', {});
     };

@@ -15,3 +15,7 @@ textarea.addEventListener("keydown", (event) => {
   }
 });
 
+// autoscroll to the end of page on load
+window.onload = function() {
+  window.scrollTo(0, document.body.scrollHeight);
+}

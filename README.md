@@ -9,7 +9,7 @@ Requirements
 ```
 apt install node npm
 npm init -y
-npm install openai readline-sync express pug
+npm install openai readline-sync express pug moment
 npm install dotenv --save
 sudo npm install -g nodemon
 ``` 

@@ -15,7 +15,7 @@ function createLogFile() {
 // Create an empty csv file with the current date and time as the name
 const now = moment();
 const fileName = now.format('YYYYMMDD_HHmmss') + '.csv';
-  
+
 fs.writeFile(fileName, '', function(err) {
     if (err) {
       console.log(err);

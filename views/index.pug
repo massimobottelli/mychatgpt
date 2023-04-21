@@ -13,7 +13,9 @@ html
     div.content
       div.chat !{content}
     div.footer
-      button#download.download(onclick="downloadFile(fileName)")
+      button.download
+        a(href=fileName)
+      button.download(type='button', onclick="location.href='./"+fileName+"'")
       form(action="/" method="POST")
         button#clear.clear  
         textarea.prompt(name='prompt', id='prompt', rows='1', placeholder='Your request...')

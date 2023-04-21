@@ -4,8 +4,37 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+const moment = require('moment');
+const fs = require('fs');
+const https = require('https');
+
 let history = [];
 let chat = '';
+
+function createLogFile() {
+// Create an empty csv file with the current date and time as the name
+const now = moment();
+const fileName = now.format('YYYYMMDD_HHmmss') + '.csv';
+  
+fs.writeFile(fileName, '', function(err) {
+    if (err) {
+      console.log(err);
+    };
+  });
+  return fileName;
+}
+ 
+function writeToCsv(text, fileName) {
+    // Append timestamp and string to the file
+    const now = moment();
+    const timestamp = now.format('YYYY-MM-DD HH:mm:ss');
+    const stringToAppend = `${timestamp},"${text}"\n`;
+    fs.appendFile(fileName, stringToAppend, function(err) {
+        if (err) {
+            console.log(err);
+        };
+    });
+}
 
 // initialize OpenAI API
 const {
@@ -68,6 +97,9 @@ async function processUserInput(user_input, res) {
         // empty page
         res.render('index', {});
     } else {
+        // add user input to log file 
+        writeToCsv (user_input, fileName);
+
         const messages = getMessagesAndAddToHistory(user_input);
         const completion = await openai.createChatCompletion({
             model: 'gpt-3.5-turbo',
@@ -79,11 +111,15 @@ async function processUserInput(user_input, res) {
 
         console.log(completion_text); // debug
 
+        // add user input to log file 
+        writeToCsv (completion_text, fileName);
+
+
         // Add question and answer to chat
         chat += `<div class="question"><p>${user_input}</p></div>`;
         chat += `<div class="answer"><p>${completion_text}</p></div>`;
 
-        chat = chat.replace(/\n/g, '<br/>');
+        chat = chat.replace(/\n/g, '<br>');
 
         // format source code in answer
         while (chat.indexOf('```') > 0) {
@@ -110,19 +146,21 @@ async function processUserInput(user_input, res) {
     }
 }
 
-// Render the index page with a form to enter the name
+// Render the home page 
 app.get('/', (req, res) => {
     res.render('index');
+    fileName = createLogFile();
 });
 
 // Handle clear history
 app.post('/clear', (req, res) => {
     clearChat();
     res.render('index');
-    console.log('reset chat'); // debug
+    fileName = createLogFile();
+    console.log('\nChat reset'); // debug
 });
 
-// Handle the form submission and render the greeting page
+// Handle the form submission 
 app.post('/', (req, res) => {
     const user_input = req.body.prompt;
     processUserInput(user_input, res);

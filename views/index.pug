@@ -9,20 +9,14 @@ html
       a(href='/') 
         img(src="/img/header-logo.png", alt="PurrfectAI | Answers, purr-sonalized for you")
       h1 
-        a(href='/') PurrfectAI
+        a(href='/') PurrfectAI 
     div.content
       div.chat !{content}
     div.footer
+      button#download.download(onclick="downloadFile(fileName)")
       form(action="/" method="POST")
-        button#download.download 
         button#clear.clear  
         textarea.prompt(name='prompt', id='prompt', rows='1', placeholder='Your request...')
         button.submit(type='submit')
+
     script(type='text/javascript', src='js/functions.js')
-    script.
-      const clearButton = document.querySelector('#clear');
-      clearButton.addEventListener('click', () => {
-        fetch('/clear', { method: 'POST' })
-          .then(chat => chat.text())
-          .catch(error => console.error(error));
-      });

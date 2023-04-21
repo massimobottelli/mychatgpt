@@ -19,3 +19,16 @@ textarea.addEventListener("keydown", (event) => {
 window.onload = function() {
   window.scrollTo(0, document.body.scrollHeight);
 }
+
+const clearButton = document.querySelector('#clear');
+    clearButton.addEventListener('click', () => {
+        fetch('/clear', {
+            method: 'POST'
+        })
+        .then(chat => chat.text())
+        .catch(error => console.error(error));
+    });
+
+
+
+  

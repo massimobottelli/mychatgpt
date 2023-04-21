@@ -1,6 +1,6 @@
-# myChatGPT
+# PurrfectAI
 
-![myChatGPT](public/myChatGPT.png)
+![PurrfectAI](public/myChatGPT.jpeg)
 
 
 ## Installation
@@ -15,7 +15,7 @@ sudo npm install -g nodemon
 ``` 
 Clone repository
 ```
-git clone https://github.com/massimobottelli/mychatgpt.git
+git clone https://github.com/massimobottelli/purrfectai.git
 ```
 
 Setup OpenAI API key

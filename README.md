@@ -16,7 +16,7 @@ git clone https://github.com/massimobottelli/purrfectai.git
 
 To run the script, you need to install Node.js and nodemon
 ```
-apt install node npm
+apt install nodejs npm
 npm init -y
 sudo npm install -g nodemon
 ```
